@@ -11,9 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var VideoService = (function () {
     function VideoService() {
+        this.currentPath = "";
+        this.currentTitle = "loading...";
     }
     VideoService.prototype.appSetup = function (v) {
         this.videoElement = document.getElementById(v);
+        this.currentPath = "./video/cow.mp4";
+        this.currentTitle = "cow video";
     };
     VideoService = __decorate([
         core_1.Injectable(), 
