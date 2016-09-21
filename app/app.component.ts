@@ -4,9 +4,17 @@ import {Component} from '@angular/core';
 	selector:'video-app',
 	template:`
 			<div class="row">
-      	<div class="col-sm-12 embed-responsive embed-responsive-16by9">
-  			<video src="video/cow.mp4" width="1200" height="720" controls></video>
-    	</div>
+      	      <div class="col-sm-12">
+        <div id="fullPlayer">
+          <div class="embed-responsive embed-responsive-16by9">
+              <video id="videoDisplay" width="100%" height="100%" src="./video/cow.mp4"  class="embed-responsive-item" controls></video>
+              <div id="bigPlayButton"><i class="fa fa-play"></i></div>
+              <div id="videoTitle">Video Title</div>
+          </div>
+          <video-progress></video-progress>
+          <video-toolbar></video-toolbar>
+        </div>
+      </div>
     </div>
 	`
 })

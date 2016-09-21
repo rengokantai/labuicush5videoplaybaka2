@@ -15,7 +15,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'video-app',
-            template: "\n\t\t\t<div class=\"row\">\n      \t<div class=\"col-sm-12 embed-responsive embed-responsive-16by9\">\n  \t\t\t<video src=\"video/cow.mp4\" width=\"1200\" height=\"720\" controls></video>\n    \t</div>\n    </div>\n\t"
+            template: "\n\t\t\t<div class=\"row\">\n      \t      <div class=\"col-sm-12\">\n        <div id=\"fullPlayer\">\n          <div class=\"embed-responsive embed-responsive-16by9\">\n              <video id=\"videoDisplay\" width=\"100%\" height=\"100%\" src=\"./video/cow.mp4\"  class=\"embed-responsive-item\" controls></video>\n              <div id=\"bigPlayButton\"><i class=\"fa fa-play\"></i></div>\n              <div id=\"videoTitle\">Video Title</div>\n          </div>\n          <video-progress></video-progress>\n          <video-toolbar></video-toolbar>\n        </div>\n      </div>\n    </div>\n\t"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
