@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {ProgressComponent} from './progress.component';
 import {ToolbarComponent} from './toolbar.component';
-
+import {VideoService} from './video.service';
 
 @Component({
 	selector:'video-app',
@@ -20,11 +20,13 @@ import {ToolbarComponent} from './toolbar.component';
       </div>
     </div>
 	`,
-    directives: [ProgressComponent, ToolbarComponent]
+    directives: [ProgressComponent, ToolbarComponent],
+    providers: [VideoService]
 })
 
-export class AppComponent{
-	constructor(){
-
-	}
+export class AppComponent implements OnInit {
+    constructor(public videoService:VideoService) {}
+    ngOnInit() {
+        this.videoService.appSetup("videoDisplay");
+    }
 }
