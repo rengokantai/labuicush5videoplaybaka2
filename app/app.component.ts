@@ -1,4 +1,7 @@
 import {Component} from '@angular/core';
+import {ProgressComponent} from './progress.component';
+import {ToolbarComponent} from './toolbar.component';
+
 
 @Component({
 	selector:'video-app',
@@ -16,7 +19,8 @@ import {Component} from '@angular/core';
         </div>
       </div>
     </div>
-	`
+	`,
+    directives: [ProgressComponent, ToolbarComponent]
 })
 
 export class AppComponent{
