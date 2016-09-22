@@ -28,5 +28,6 @@ export class AppComponent implements OnInit {
     constructor(public videoService:VideoService) {}
     ngOnInit() {
         this.videoService.appSetup("videoDisplay");
+        this.videoService.gatherJSON();
     }
 }

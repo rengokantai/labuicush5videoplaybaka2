@@ -1,4 +1,7 @@
 import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class VideoService {
@@ -15,7 +18,9 @@ export class VideoService {
   public isDragging:boolean = false;
   public showDetails:boolean = false;
   public currentDesc:string = "Desc";
-  constructor() {}
+  public playlist:Array<Object> = [];
+  constructor(private http:Http) {}
+
 
   appSetup(v:string) {
     this.videoElement = <HTMLVideoElement> document.getElementById(v);
@@ -26,6 +31,17 @@ export class VideoService {
     this.currentDesc = "cow video";
     window.setInterval(this.timerFired, 500);
   }
+
+    gatherJSON = () => {
+      this.http.get('./data/playlist.json')
+          .map((res:Response) => res.json())
+          .subscribe(
+              data => {
+                  this.playlist = data;
+                  console.log(this.playlist);
+              }
+          );
+  };
 
   seekVideo(e:any) {
       var w = document.getElementById('progressMeterFull').offsetWidth;

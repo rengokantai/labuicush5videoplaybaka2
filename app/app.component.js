@@ -19,6 +19,7 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
         this.videoService.appSetup("videoDisplay");
+        this.videoService.gatherJSON();
     };
     AppComponent = __decorate([
         core_1.Component({

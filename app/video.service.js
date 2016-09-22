@@ -9,9 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
 var VideoService = (function () {
-    function VideoService() {
+    function VideoService(http) {
         var _this = this;
+        this.http = http;
         this.currentPath = "";
         this.currentTitle = "loading...";
         this.currentTime = 0;
@@ -21,6 +24,15 @@ var VideoService = (function () {
         this.isDragging = false;
         this.showDetails = false;
         this.currentDesc = "Desc";
+        this.playlist = [];
+        this.gatherJSON = function () {
+            _this.http.get('./data/playlist.json')
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                _this.playlist = data;
+                console.log(_this.playlist);
+            });
+        };
         this.dragStart = function (e) {
             this.isDragging = true;
         };
@@ -114,7 +126,7 @@ var VideoService = (function () {
     ;
     VideoService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], VideoService);
     return VideoService;
 }());
