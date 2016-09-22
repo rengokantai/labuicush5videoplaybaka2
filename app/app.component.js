@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var progress_component_1 = require('./progress.component');
 var toolbar_component_1 = require('./toolbar.component');
+var options_component_1 = require('./options.component');
 var video_service_1 = require('./video.service');
 var AppComponent = (function () {
     function AppComponent(videoService) {
@@ -22,8 +23,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'video-app',
-            template: "\n\t\t\t<div class=\"row\">\n      \t      <div class=\"col-sm-12\">\n        <div id=\"fullPlayer\"  (mouseup)=\"videoService.dragStop($event)\" (mousemove)=\"videoService.dragMove($event)\" (mouseleave)=\"videoService.dragStop($event)\">\n          <div class=\"embed-responsive embed-responsive-16by9\">\n              <video id=\"videoDisplay\" width=\"100%\" height=\"100%\" src=\"{{videoService.currentPath}}\"  class=\"embed-responsive-item\" controls></video>\n              <div id=\"bigPlayButton\" [hidden]=\"videoService.isPlaying\" (click)=\"videoService.playVideo()\"><i class=\"fa fa-play\"></i></div>\n              <div id=\"videoTitle\" [hidden]=\"videoService.isPlaying\">{{videoService.currentTitle}}</div>\n          </div>\n          <video-progress></video-progress>\n          <video-toolbar></video-toolbar>\n        </div>\n      </div>\n    </div>\n\t",
-            directives: [progress_component_1.ProgressComponent, toolbar_component_1.ToolbarComponent],
+            template: "\n\n        <div id=\"fullPlayer\"  (mouseup)=\"videoService.dragStop($event)\" (mousemove)=\"videoService.dragMove($event)\" (mouseleave)=\"videoService.dragStop($event)\">\n          <div class=\"embed-responsive embed-responsive-16by9\">\n              <video id=\"videoDisplay\" width=\"100%\" height=\"100%\" src=\"{{videoService.currentPath}}\"  class=\"embed-responsive-item\" controls></video>\n              <div id=\"bigPlayButton\" [hidden]=\"videoService.isPlaying\" (click)=\"videoService.playVideo()\"><i class=\"fa fa-play\"></i></div>\n              <div id=\"videoTitle\" [hidden]=\"videoService.isPlaying\">{{videoService.currentTitle}}</div>\n              <video-options [hidden]=\"!videoService.showDetails\"></video-options>\n          </div>\n          <video-progress></video-progress>\n          <video-toolbar></video-toolbar>\n        </div>\n\n\t",
+            directives: [progress_component_1.ProgressComponent, toolbar_component_1.ToolbarComponent, options_component_1.OptionsComponent],
             providers: [video_service_1.VideoService]
         }), 
         __metadata('design:paramtypes', [video_service_1.VideoService])

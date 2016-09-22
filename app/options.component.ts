@@ -4,7 +4,7 @@ import {VideoService} from "./video.service";
 @Component({
     selector: 'video-options',
     template: `
-    <div id="VideoOptions" [hidden]="!videoService.showDetails" class="card">
+    <div id="VideoOptions" class="card">
         <div class="panel-heading">
             <h1 class="panel-title">{{videoService.currentTitle}}</h1>
         </div>

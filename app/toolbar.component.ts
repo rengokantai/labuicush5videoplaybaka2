@@ -16,6 +16,9 @@ import {TimeDisplayPipe} from "./timedisplay.pipe";
         <a id="fsBtn" class="btn btn-default pull-right" (click)="videoService.fullScreen()">
             <i class="fa fa-expand"></i>
         </a>
+         <a id="detailsBtn" class="btn btn-default pull-right" (click)="videoService.details()">
+        	   <i class="fa fa-bars"></i>
+        </a>
     </div>
     `,
     pipes: [TimeDisplayPipe]

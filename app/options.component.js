@@ -17,7 +17,7 @@ var OptionsComponent = (function () {
     OptionsComponent = __decorate([
         core_1.Component({
             selector: 'video-options',
-            template: "\n    <div id=\"VideoOptions\" [hidden]=\"!videoService.showDetails\" class=\"card\">\n        <div class=\"panel-heading\">\n            <h1 class=\"panel-title\">{{videoService.currentTitle}}</h1>\n        </div>\n        <div class=\"panel-body\">\n            <div class=\"col-xs-6\">\n                <h2>Video Details:</h2>\n                <p>{{videoService.currentDesc}}</p>\n            </div>\n            <div class=\"col-xs-6\"></div>\n        </div>\n    </div>\n    "
+            template: "\n    <div id=\"VideoOptions\" class=\"card\">\n        <div class=\"panel-heading\">\n            <h1 class=\"panel-title\">{{videoService.currentTitle}}</h1>\n        </div>\n        <div class=\"panel-body\">\n            <div class=\"col-xs-6\">\n                <h2>Video Details:</h2>\n                <p>{{videoService.currentDesc}}</p>\n            </div>\n            <div class=\"col-xs-6\"></div>\n        </div>\n    </div>\n    "
         }), 
         __metadata('design:paramtypes', [video_service_1.VideoService])
     ], OptionsComponent);
