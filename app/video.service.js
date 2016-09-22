@@ -19,6 +19,8 @@ var VideoService = (function () {
         this.isMuted = false;
         this.isPlaying = false;
         this.isDragging = false;
+        this.showDetails = false;
+        this.currentDesc = "Desc";
         this.dragStart = function (e) {
             this.isDragging = true;
         };
@@ -54,6 +56,7 @@ var VideoService = (function () {
         this.videoElement.addEventListener("timeupdate", this.updateTime);
         this.currentPath = "./video/cow.mp4";
         this.currentTitle = "cow video";
+        this.currentDesc = "cow video";
         window.setInterval(this.timerFired, 500);
     };
     VideoService.prototype.seekVideo = function (e) {
@@ -82,6 +85,15 @@ var VideoService = (function () {
         else {
             this.videoElement.pause();
             this.isPlaying = false;
+        }
+    };
+    ;
+    VideoService.prototype.details = function () {
+        if (this.showDetails == false) {
+            this.showDetails = true;
+        }
+        else {
+            this.showDetails = false;
         }
     };
     ;

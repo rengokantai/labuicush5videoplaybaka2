@@ -13,6 +13,8 @@ export class VideoService {
   public isMuted:boolean = false;
   public isPlaying:boolean = false;
   public isDragging:boolean = false;
+  public showDetails:boolean = false;
+  public currentDesc:string = "Desc";
   constructor() {}
 
   appSetup(v:string) {
@@ -21,6 +23,7 @@ export class VideoService {
     this.videoElement.addEventListener("timeupdate", this.updateTime);
     this.currentPath = "./video/cow.mp4";
     this.currentTitle = "cow video";
+    this.currentDesc = "cow video";
     window.setInterval(this.timerFired, 500);
   }
 
@@ -81,6 +84,14 @@ export class VideoService {
       var d = this.videoElement.duration;
       this.calculatedWidth = (t / d * this.videoElement.offsetWidth);
     }
+  };
+
+    details() {
+      if(this.showDetails == false){
+          this.showDetails = true;
+      }else{
+          this.showDetails = false;
+      }
   };
 
   fullScreen() {
