@@ -26,9 +26,9 @@ export class VideoService {
     this.videoElement = <HTMLVideoElement> document.getElementById(v);
     this.videoElement.addEventListener("loadedmetadata", this.updateData);
     this.videoElement.addEventListener("timeupdate", this.updateTime);
-    this.currentPath = "./video/cow.mp4";
-    this.currentTitle = "cow video";
-    this.currentDesc = "cow video";
+    //this.currentPath = "./video/cow.mp4";
+    //this.currentTitle = "cow video";
+    //this.currentDesc = "cow video";
     window.setInterval(this.timerFired, 500);
   }
 
@@ -38,9 +38,17 @@ export class VideoService {
           .subscribe(
               data => {
                   this.playlist = data;
-                  console.log(this.playlist);
+                  this.selectedVideo(1);
               }
           );
+  };
+
+    selectedVideo = (i:number) => {
+      this.currentTitle = this.playlist[i]['title'];
+      this.currentDesc = this.playlist[i]['description'];
+      this.videoElement.src = this.playlist[i]['path'];
+      this.videoElement.pause();
+      this.isPlaying = false;
   };
 
   seekVideo(e:any) {

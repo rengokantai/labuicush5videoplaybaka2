@@ -13,7 +13,12 @@ import {VideoService} from "./video.service";
                 <h2>Video Details:</h2>
                 <p>{{videoService.currentDesc}}</p>
             </div>
-            <div class="col-xs-6"></div>
+             <div class="col-xs-6">
+                <ul class="list-group">
+                    <h2>Playlist:</h2>
+                    <li class="list-group-item" *ngFor="let playlistItem of videoService.playlist; let i = index" (click)="videoService.selectedVideo(i)">{{playlistItem.title}}</li>
+                </ul>
+            </div>
         </div>
     </div>
     `

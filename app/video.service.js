@@ -30,8 +30,15 @@ var VideoService = (function () {
                 .map(function (res) { return res.json(); })
                 .subscribe(function (data) {
                 _this.playlist = data;
-                console.log(_this.playlist);
+                _this.selectedVideo(1);
             });
+        };
+        this.selectedVideo = function (i) {
+            _this.currentTitle = _this.playlist[i]['title'];
+            _this.currentDesc = _this.playlist[i]['description'];
+            _this.videoElement.src = _this.playlist[i]['path'];
+            _this.videoElement.pause();
+            _this.isPlaying = false;
         };
         this.dragStart = function (e) {
             this.isDragging = true;
@@ -66,9 +73,9 @@ var VideoService = (function () {
         this.videoElement = document.getElementById(v);
         this.videoElement.addEventListener("loadedmetadata", this.updateData);
         this.videoElement.addEventListener("timeupdate", this.updateTime);
-        this.currentPath = "./video/cow.mp4";
-        this.currentTitle = "cow video";
-        this.currentDesc = "cow video";
+        //this.currentPath = "./video/cow.mp4";
+        //this.currentTitle = "cow video";
+        //this.currentDesc = "cow video";
         window.setInterval(this.timerFired, 500);
     };
     VideoService.prototype.seekVideo = function (e) {
