@@ -6,6 +6,9 @@ import {TimeDisplayPipe} from "./timedisplay.pipe";
     selector: 'video-toolbar',
     template: `
     <div id="playerToolBar">
+        <a id="muteBtn" class="btn btn-default" (click)="videoService.muteVideo()">
+            <i [ngClass]="{'fa-volume-off': videoService.isMuted, 'fa-volume-up': !videoService.isMuted}" class="fa"></i>
+        </a>
         <span id="videoTime">{{videoService.currentTime | timeDisplay}} / {{videoService.totalTime | timeDisplay}}</span>
     </div>
     `,

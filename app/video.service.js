@@ -16,6 +16,7 @@ var VideoService = (function () {
         this.currentTitle = "loading...";
         this.currentTime = 0;
         this.totalTime = 0;
+        this.isMuted = false;
         this.updateData = function (e) {
             _this.totalTime = _this.videoElement.duration;
         };
@@ -37,6 +38,17 @@ var VideoService = (function () {
         this.currentTitle = "cow video";
         window.setInterval(this.timerFired, 500);
     };
+    VideoService.prototype.muteVideo = function () {
+        if (this.videoElement.volume == 0) {
+            this.videoElement.volume = 1;
+            this.isMuted = false;
+        }
+        else {
+            this.videoElement.volume = 0;
+            this.isMuted = true;
+        }
+    };
+    ;
     VideoService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

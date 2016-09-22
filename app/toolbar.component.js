@@ -18,7 +18,7 @@ var ToolbarComponent = (function () {
     ToolbarComponent = __decorate([
         core_1.Component({
             selector: 'video-toolbar',
-            template: "\n    <div id=\"playerToolBar\">\n        <span id=\"videoTime\">{{videoService.currentTime | timeDisplay}} / {{videoService.totalTime | timeDisplay}}</span>\n    </div>\n    ",
+            template: "\n    <div id=\"playerToolBar\">\n        <a id=\"muteBtn\" class=\"btn btn-default\" (click)=\"videoService.muteVideo()\">\n            <i [ngClass]=\"{'fa-volume-off': videoService.isMuted, 'fa-volume-up': !videoService.isMuted}\" class=\"fa\"></i>\n        </a>\n        <span id=\"videoTime\">{{videoService.currentTime | timeDisplay}} / {{videoService.totalTime | timeDisplay}}</span>\n    </div>\n    ",
             pipes: [timedisplay_pipe_1.TimeDisplayPipe]
         }), 
         __metadata('design:paramtypes', [video_service_1.VideoService])

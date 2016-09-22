@@ -10,7 +10,7 @@ export class VideoService {
   public totalTime:number = 0;
   public calculatedWidth:number;
   public calculatedScrubY:number;
-
+  public isMuted:boolean = false;
   constructor() {}
 
   appSetup(v:string) {
@@ -21,6 +21,16 @@ export class VideoService {
     this.currentTitle = "cow video";
     window.setInterval(this.timerFired, 500);
   }
+
+  muteVideo() {
+    if(this.videoElement.volume == 0) {
+      	this.videoElement.volume = 1;
+      	this.isMuted = false;
+  	}else{
+      	this.videoElement.volume = 0;
+      	this.isMuted = true;
+  	}
+  };
 
   updateData = (e:any) => {
       this.totalTime = this.videoElement.duration;
