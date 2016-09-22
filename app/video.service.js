@@ -11,11 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var VideoService = (function () {
     function VideoService() {
+        var _this = this;
         this.currentPath = "";
         this.currentTitle = "loading...";
+        this.currentTime = 0;
+        this.totalTime = 0;
+        this.updateData = function (e) {
+            _this.totalTime = _this.videoElement.duration;
+        };
+        this.updateTime = function (e) {
+            _this.currentTime = _this.videoElement.currentTime;
+        };
     }
     VideoService.prototype.appSetup = function (v) {
         this.videoElement = document.getElementById(v);
+        this.videoElement.addEventListener("loadedmetadata", this.updateData);
+        this.videoElement.addEventListener("timeupdate", this.updateTime);
         this.currentPath = "./video/cow.mp4";
         this.currentTitle = "cow video";
     };

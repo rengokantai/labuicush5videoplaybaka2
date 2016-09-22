@@ -1,11 +1,14 @@
 import {Component} from '@angular/core';
+import {VideoService} from "./video.service";
 
 @Component({
     selector: 'video-toolbar',
     template: `
-    <div id="playerToolBar"></div>
+    <div id="playerToolBar">
+        <span id="videoTime">{{videoService.currentTime}} / {{videoService.totalTime}}</span>
+    </div>
     `
 })
 export class ToolbarComponent {
-    constructor() {}
+    constructor(public videoService:VideoService) {}
 }
