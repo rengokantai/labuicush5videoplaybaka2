@@ -8,6 +8,8 @@ export class VideoService {
   public currentTitle:string = "loading...";
   public currentTime:number = 0;
   public totalTime:number = 0;
+  public calculatedWidth:number;
+  public calculatedScrubY:number;
 
   constructor() {}
 
@@ -17,6 +19,7 @@ export class VideoService {
     this.videoElement.addEventListener("timeupdate", this.updateTime);
     this.currentPath = "./video/cow.mp4";
     this.currentTitle = "cow video";
+    window.setInterval(this.timerFired, 500);
   }
 
   updateData = (e:any) => {
@@ -24,6 +27,13 @@ export class VideoService {
   };
   updateTime = (e:any) => {
       this.currentTime = this.videoElement.currentTime;
+  };
+
+  timerFired = () => {
+      this.calculatedScrubY = this.videoElement.offsetHeight;
+      var t = this.videoElement.currentTime;
+      var d = this.videoElement.duration;
+      this.calculatedWidth = (t / d * this.videoElement.offsetWidth);
   };
 
 }

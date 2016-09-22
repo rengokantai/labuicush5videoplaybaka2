@@ -22,6 +22,12 @@ var VideoService = (function () {
         this.updateTime = function (e) {
             _this.currentTime = _this.videoElement.currentTime;
         };
+        this.timerFired = function () {
+            _this.calculatedScrubY = _this.videoElement.offsetHeight;
+            var t = _this.videoElement.currentTime;
+            var d = _this.videoElement.duration;
+            _this.calculatedWidth = (t / d * _this.videoElement.offsetWidth);
+        };
     }
     VideoService.prototype.appSetup = function (v) {
         this.videoElement = document.getElementById(v);
@@ -29,6 +35,7 @@ var VideoService = (function () {
         this.videoElement.addEventListener("timeupdate", this.updateTime);
         this.currentPath = "./video/cow.mp4";
         this.currentTitle = "cow video";
+        window.setInterval(this.timerFired, 500);
     };
     VideoService = __decorate([
         core_1.Injectable(), 

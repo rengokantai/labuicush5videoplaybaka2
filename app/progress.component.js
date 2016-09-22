@@ -9,15 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var video_service_1 = require("./video.service");
 var ProgressComponent = (function () {
-    function ProgressComponent() {
+    function ProgressComponent(videoService) {
+        this.videoService = videoService;
     }
     ProgressComponent = __decorate([
         core_1.Component({
             selector: 'video-progress',
-            template: "\n    <div id=\"progressMeterFull\">\n        <div id=\"progressMeter\"></div>\n    </div>\n    <div id=\"thumbScrubber\"></div>\n    "
+            template: "\n    <div id=\"progressMeterFull\">\n        <div id=\"progressMeter\" [style.width.px]=\"videoService.calculatedWidth\"></div>\n    </div>\n    <div id=\"thumbScrubber\" [style.top.px]=\"videoService.calculatedScrubY - 2\" [style.left.px]=\"videoService.calculatedWidth\"></div>\n    "
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [video_service_1.VideoService])
     ], ProgressComponent);
     return ProgressComponent;
 }());
