@@ -39,6 +39,13 @@ var VideoService = (function () {
         this.currentTitle = "cow video";
         window.setInterval(this.timerFired, 500);
     };
+    VideoService.prototype.seekVideo = function (e) {
+        var w = document.getElementById('progressMeterFull').offsetWidth;
+        var d = this.videoElement.duration;
+        var s = Math.round(e.pageX / w * d);
+        this.videoElement.currentTime = s;
+    };
+    ;
     VideoService.prototype.muteVideo = function () {
         if (this.videoElement.volume == 0) {
             this.videoElement.volume = 1;

@@ -17,7 +17,7 @@ var ProgressComponent = (function () {
     ProgressComponent = __decorate([
         core_1.Component({
             selector: 'video-progress',
-            template: "\n    <div id=\"progressMeterFull\">\n        <div id=\"progressMeter\" [style.width.px]=\"videoService.calculatedWidth\"></div>\n    </div>\n    <div id=\"thumbScrubber\" [style.top.px]=\"videoService.calculatedScrubY - 2\" [style.left.px]=\"videoService.calculatedWidth\"></div>\n    "
+            template: "\n    <div id=\"progressMeterFull\" (click)=\"videoService.seekVideo($event)\">\n        <div id=\"progressMeter\" (click)=\"videoService.seekVideo($event)\" [style.width.px]=\"videoService.calculatedWidth\"></div>\n    </div>\n    <div id=\"thumbScrubber\" [style.top.px]=\"videoService.calculatedScrubY - 2\" [style.left.px]=\"videoService.calculatedWidth\"></div>\n    "
         }), 
         __metadata('design:paramtypes', [video_service_1.VideoService])
     ], ProgressComponent);

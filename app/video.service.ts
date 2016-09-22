@@ -23,6 +23,16 @@ export class VideoService {
     window.setInterval(this.timerFired, 500);
   }
 
+  seekVideo(e:any) {
+      var w = document.getElementById('progressMeterFull').offsetWidth;
+      var d = this.videoElement.duration;
+      var s = Math.round(e.pageX / w * d);
+      this.videoElement.currentTime = s;
+  };
+
+
+  
+
   muteVideo() {
     if(this.videoElement.volume == 0) {
       	this.videoElement.volume = 1;
