@@ -8,7 +8,7 @@ import {VideoService} from './video.service';
 	template:`
 			<div class="row">
       	      <div class="col-sm-12">
-        <div id="fullPlayer">
+        <div id="fullPlayer"  (mouseup)="videoService.dragStop($event)" (mousemove)="videoService.dragMove($event)" (mouseleave)="videoService.dragStop($event)">
           <div class="embed-responsive embed-responsive-16by9">
               <video id="videoDisplay" width="100%" height="100%" src="{{videoService.currentPath}}"  class="embed-responsive-item" controls></video>
               <div id="bigPlayButton" [hidden]="videoService.isPlaying" (click)="videoService.playVideo()"><i class="fa fa-play"></i></div>

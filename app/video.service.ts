@@ -12,6 +12,7 @@ export class VideoService {
   public calculatedScrubY:number;
   public isMuted:boolean = false;
   public isPlaying:boolean = false;
+  public isDragging:boolean = false;
   constructor() {}
 
   appSetup(v:string) {
@@ -31,7 +32,20 @@ export class VideoService {
   };
 
 
-  
+  dragStart = function(e:any) {
+      this.isDragging = true;
+  };
+  dragMove = function(e:any) {
+      if(this.isDragging){
+          this.calculatedWidth = e.x;
+      }
+  };
+  dragStop = function(e:any) {
+      if(this.isDragging){
+          this.isDragging = false;
+          this.seekVideo(e);
+      }
+  };
 
   muteVideo() {
     if(this.videoElement.volume == 0) {
@@ -61,10 +75,12 @@ export class VideoService {
   };
 
   timerFired = () => {
+	if(!this.isDragging) {
       this.calculatedScrubY = this.videoElement.offsetHeight;
       var t = this.videoElement.currentTime;
       var d = this.videoElement.duration;
       this.calculatedWidth = (t / d * this.videoElement.offsetWidth);
+    }
   };
 
 }

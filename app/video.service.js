@@ -18,6 +18,21 @@ var VideoService = (function () {
         this.totalTime = 0;
         this.isMuted = false;
         this.isPlaying = false;
+        this.isDragging = false;
+        this.dragStart = function (e) {
+            this.isDragging = true;
+        };
+        this.dragMove = function (e) {
+            if (this.isDragging) {
+                this.calculatedWidth = e.x;
+            }
+        };
+        this.dragStop = function (e) {
+            if (this.isDragging) {
+                this.isDragging = false;
+                this.seekVideo(e);
+            }
+        };
         this.updateData = function (e) {
             _this.totalTime = _this.videoElement.duration;
         };
@@ -25,10 +40,12 @@ var VideoService = (function () {
             _this.currentTime = _this.videoElement.currentTime;
         };
         this.timerFired = function () {
-            _this.calculatedScrubY = _this.videoElement.offsetHeight;
-            var t = _this.videoElement.currentTime;
-            var d = _this.videoElement.duration;
-            _this.calculatedWidth = (t / d * _this.videoElement.offsetWidth);
+            if (!_this.isDragging) {
+                _this.calculatedScrubY = _this.videoElement.offsetHeight;
+                var t = _this.videoElement.currentTime;
+                var d = _this.videoElement.duration;
+                _this.calculatedWidth = (t / d * _this.videoElement.offsetWidth);
+            }
         };
     }
     VideoService.prototype.appSetup = function (v) {
