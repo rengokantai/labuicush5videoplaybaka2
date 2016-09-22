@@ -17,6 +17,7 @@ var VideoService = (function () {
         this.currentTime = 0;
         this.totalTime = 0;
         this.isMuted = false;
+        this.isPlaying = false;
         this.updateData = function (e) {
             _this.totalTime = _this.videoElement.duration;
         };
@@ -46,6 +47,17 @@ var VideoService = (function () {
         else {
             this.videoElement.volume = 0;
             this.isMuted = true;
+        }
+    };
+    ;
+    VideoService.prototype.playVideo = function () {
+        if (this.videoElement.paused) {
+            this.videoElement.play();
+            this.isPlaying = true;
+        }
+        else {
+            this.videoElement.pause();
+            this.isPlaying = false;
         }
     };
     ;

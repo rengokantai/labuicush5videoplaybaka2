@@ -6,6 +6,9 @@ import {TimeDisplayPipe} from "./timedisplay.pipe";
     selector: 'video-toolbar',
     template: `
     <div id="playerToolBar">
+       <a id="playBtn" class="btn btn-default" (click)="videoService.playVideo()">
+        	  <i [ngClass]="{'fa-play': !videoService.isPlaying, 'fa-pause': videoService.isPlaying}" class="fa"></i>
+        </a>
         <a id="muteBtn" class="btn btn-default" (click)="videoService.muteVideo()">
             <i [ngClass]="{'fa-volume-off': videoService.isMuted, 'fa-volume-up': !videoService.isMuted}" class="fa"></i>
         </a>

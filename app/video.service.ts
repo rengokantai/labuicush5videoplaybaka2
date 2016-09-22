@@ -11,6 +11,7 @@ export class VideoService {
   public calculatedWidth:number;
   public calculatedScrubY:number;
   public isMuted:boolean = false;
+  public isPlaying:boolean = false;
   constructor() {}
 
   appSetup(v:string) {
@@ -30,6 +31,16 @@ export class VideoService {
       	this.videoElement.volume = 0;
       	this.isMuted = true;
   	}
+  };
+
+   playVideo() {
+      if(this.videoElement.paused) {
+          this.videoElement.play();
+          this.isPlaying = true;
+      }else{
+          this.videoElement.pause();
+          this.isPlaying = false;
+      }
   };
 
   updateData = (e:any) => {
