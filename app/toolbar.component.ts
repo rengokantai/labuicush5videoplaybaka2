@@ -13,6 +13,9 @@ import {TimeDisplayPipe} from "./timedisplay.pipe";
             <i [ngClass]="{'fa-volume-off': videoService.isMuted, 'fa-volume-up': !videoService.isMuted}" class="fa"></i>
         </a>
         <span id="videoTime">{{videoService.currentTime | timeDisplay}} / {{videoService.totalTime | timeDisplay}}</span>
+        <a id="fsBtn" class="btn btn-default pull-right" (click)="videoService.fullScreen()">
+            <i class="fa fa-expand"></i>
+        </a>
     </div>
     `,
     pipes: [TimeDisplayPipe]

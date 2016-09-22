@@ -85,6 +85,21 @@ var VideoService = (function () {
         }
     };
     ;
+    VideoService.prototype.fullScreen = function () {
+        if (this.videoElement.requestFullscreen) {
+            this.videoElement.requestFullscreen();
+        }
+        else if (this.videoElement.mozRequestFullScreen) {
+            this.videoElement.mozRequestFullScreen();
+        }
+        else if (this.videoElement.webkitRequestFullscreen) {
+            this.videoElement.webkitRequestFullscreen();
+        }
+        else if (this.videoElement.msRequestFullscreen) {
+            this.videoElement.msRequestFullscreen();
+        }
+    };
+    ;
     VideoService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
